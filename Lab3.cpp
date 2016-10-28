@@ -50,34 +50,100 @@ int main(){
 					cin >> numeros[contador];
 					contador++;
 				}
-				int matriz[3][polinomio+1];
-
+				int a;
+				cout<<endl<<"Ingrese a:";
+				cin>>a;
+				int **matriz;
+				matriz = new int*[3];
+				for (int i = 0; i < 3; i++){
+					matriz[i] = new int[polinomio];
+				}
+				//int matriz[3][polinomio];
 				for (int i = 0; i < 3; ++i)
 				{
-					for (int j = 0; j <= polinomio+1; ++j)
+					for (int j = 0; j <= polinomio; ++j)
 					{
 						matriz[i][j] =0;
 					}
 					cout<<endl;
 				}
-
 				for (int i = 0; i <= polinomio; ++i)
 				{
 					matriz[0][i] = numeros[i];
 				}
-				for (int i = 0; i < 3; ++i)
-				{
-					for (int j = 0; j <= polinomio+1; ++j)
-					{
-						cout<< matriz[i][j]<<" ";
-					}
-					cout<<endl;
-				}
 
+				int respuestas[polinomio];
+				for (int i = 0; i <= polinomio; ++i)
+				{
+
+					cout<<endl;
+					respuestas[i] = matriz[0][i] + matriz[1][i];
+					matriz[1][i+1] = respuestas[i] *a;
+					matriz[2][i] = respuestas[i];
+					cout<<endl;
+					for (int t = 0; t < 3; ++t)
+					{
+						for (int j = 0; j <= polinomio; ++j)
+						{
+							cout<< matriz[t][j]<<" ";
+						}
+						cout<<endl;
+					}
+
+				}
+				for (int i = 0; i <= polinomio; ++i)
+				{
+					matriz[2][i] = respuestas[i];
+
+				}
+				cout<<endl<<"El cociente es ";
+				int contador2=0;
+				for (int i = polinomio; i > 0; --i)
+				{	
+					if(i!=1){
+						cout<< respuestas[contador2]<<"x^"<<i-1<<" + ";
+					}else{
+						cout<< respuestas[contador2];
+					}
+					contador2++;
+				}
+				cout<<endl<< "El residuo es: "<< respuestas[polinomio]<<endl;
 				break;
 			}
 			case 3:{
-				
+				int numeros[4];
+				for (int i = 0; i < 4; ++i)
+				{
+					cout<<"Numero: ";
+					cin>>numeros[i];
+				}
+				cout<<numeros[0]<<numeros[1]<<numeros[2]<<numeros[3]<<endl;
+				cout<<numeros[0]<<numeros[1]<<numeros[3]<<numeros[2]<<endl;
+				cout<<numeros[0]<<numeros[2]<<numeros[3]<<numeros[1]<<endl;
+				cout<<numeros[0]<<numeros[2]<<numeros[1]<<numeros[3]<<endl;
+				cout<<numeros[0]<<numeros[3]<<numeros[1]<<numeros[2]<<endl;
+				cout<<numeros[0]<<numeros[3]<<numeros[2]<<numeros[1]<<endl;
+				cout<<endl;
+				cout<<numeros[1]<<numeros[2]<<numeros[3]<<numeros[0]<<endl;
+				cout<<numeros[1]<<numeros[2]<<numeros[0]<<numeros[3]<<endl;
+				cout<<numeros[1]<<numeros[3]<<numeros[0]<<numeros[2]<<endl;
+				cout<<numeros[1]<<numeros[3]<<numeros[2]<<numeros[0]<<endl;
+				cout<<numeros[1]<<numeros[0]<<numeros[2]<<numeros[3]<<endl;
+				cout<<numeros[1]<<numeros[0]<<numeros[3]<<numeros[2]<<endl;
+				cout<<endl;
+				cout<<numeros[2]<<numeros[3]<<numeros[0]<<numeros[1]<<endl;
+				cout<<numeros[2]<<numeros[3]<<numeros[1]<<numeros[0]<<endl;
+				cout<<numeros[2]<<numeros[0]<<numeros[1]<<numeros[3]<<endl;
+				cout<<numeros[2]<<numeros[0]<<numeros[3]<<numeros[1]<<endl;
+				cout<<numeros[2]<<numeros[1]<<numeros[3]<<numeros[0]<<endl;
+				cout<<numeros[2]<<numeros[1]<<numeros[0]<<numeros[3]<<endl;
+				cout<<endl;
+				cout<<numeros[3]<<numeros[0]<<numeros[1]<<numeros[2]<<endl;
+				cout<<numeros[3]<<numeros[0]<<numeros[2]<<numeros[1]<<endl;
+				cout<<numeros[3]<<numeros[1]<<numeros[2]<<numeros[0]<<endl;
+				cout<<numeros[3]<<numeros[1]<<numeros[0]<<numeros[2]<<endl;
+				cout<<numeros[3]<<numeros[2]<<numeros[0]<<numeros[1]<<endl;
+				cout<<numeros[3]<<numeros[2]<<numeros[1]<<numeros[0]<<endl;
 
 				break;
 			}
